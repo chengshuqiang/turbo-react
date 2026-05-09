@@ -1,0 +1,111 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 60px 40px 40px;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 8px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.codeBlock {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.codeBlock code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.techCard {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.techCard h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #667eea;
+}
+
+.techCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.techCard li {
+  padding: 4px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.techCard li::before {
+  content: "• ";
+  color: #667eea;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.list strong {
+  color: #667eea;
+}

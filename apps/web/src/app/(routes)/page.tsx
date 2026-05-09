@@ -1,6 +1,6 @@
-import styles from './page.module.css'
+import styles from '@/styles/pages/page.module.css'
 import { Button, Space, DatePicker } from 'antd'
-import { LocaleSwitcher } from './components/LocaleSwitcher'
+import { LocaleSwitcher } from '@/components/business/LocaleSwitcher'
 
 export default function Home() {
   return (

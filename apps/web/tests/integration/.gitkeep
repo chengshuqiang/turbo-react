@@ -1,0 +1,17 @@
+# 集成测试目录
+
+此目录用于存放集成测试文件。
+
+集成测试用于测试多个模块协作的场景，通常包括：
+- API 端点测试
+- 完整的用户流程测试
+- 组件集成测试
+
+示例结构：
+```
+tests/integration/
+├── api/
+│   └── users.test.ts
+└── scenarios/
+    └── user-flow.test.ts
+```

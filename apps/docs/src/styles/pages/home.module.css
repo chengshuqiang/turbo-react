@@ -56,6 +56,18 @@
   font-weight: 600;
 }
 
+.main .highlight {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.main .highlight:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
 .ctas {
   display: flex;
   gap: 16px;

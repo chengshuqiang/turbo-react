@@ -1,0 +1,169 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 60px 40px 40px;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 8px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.desc {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.file {
+  background: #f9fafb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.fileHeader {
+  padding: 12px 16px;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.fileHeader code {
+  font-size: 13px;
+  color: #667eea;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.file pre {
+  margin: 0;
+  padding: 16px;
+}
+
+.file code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.typeCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.typeCard h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #667eea;
+}
+
+.typeCard pre {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.typeCard code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 13px;
+}
+
+.example {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.example h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #111;
+}
+
+.example pre {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.example code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 13px;
+}
+
+.contextCard {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.contextCard h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #667eea;
+}
+
+.contextCard p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.contextCard pre {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.contextCard code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 13px;
+}

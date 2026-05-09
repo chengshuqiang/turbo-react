@@ -1,0 +1,179 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 60px 40px 40px;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 8px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #667eea;
+}
+
+.card pre {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 0;
+}
+
+.card code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+}
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.rule {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.rule h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #667eea;
+}
+
+.rule ul,
+.rule ol {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.rule li {
+  padding: 4px 0;
+}
+
+.info {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #667eea;
+}
+
+.info p {
+  color: #666;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.info ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.info li {
+  font-size: 14px;
+  color: #4b5563;
+  padding: 4px 0;
+}
+
+.info code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #667eea;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq details {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: #111;
+}
+
+.faq p {
+  margin: 12px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.faq code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #667eea;
+}

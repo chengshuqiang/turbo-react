@@ -1,7 +1,7 @@
 'use client'
 
 import { Select } from 'antd'
-import { useLocale } from '../contexts/LocaleContext'
+import { useLocale } from '@/contexts/LocaleContext'
 
 const localeOptions = [
   { label: '中文', value: 'zhCN' },
