@@ -1,0 +1,24 @@
+/* Layout */
+.layout {
+  display: flex;
+  height: 100vh;
+  background: var(--background);
+}
+
+.headerContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.2s;
+}
+
+.headerContainerCollapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+.main {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}

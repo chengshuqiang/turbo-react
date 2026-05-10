@@ -54,6 +54,8 @@ export default {
     title: 'Web 应用'
   },
   settings: {
+    title: '系统设置',
+    description: '配置系统参数',
     basicInfo: '基本信息',
     appearance: '外观设置',
     notification: '通知设置',
@@ -67,7 +69,18 @@ export default {
     smsNotification: '短信通知',
     pushNotification: '推送通知',
     twoFactor: '双因素认证',
-    captcha: '验证码'
+    captcha: '验证码',
+    username: '用户名',
+    email: '邮箱',
+    theme: '主题',
+    language: '语言',
+    light: '浅色',
+    dark: '深色',
+    enableNotifications: '启用通知',
+    save: '保存',
+    reset: '重置',
+    saved: '保存成功',
+    validationFailed: '验证失败'
   },
   home: {
     title: '仪表盘',

@@ -18,6 +18,7 @@ import {
   SafetyOutlined
 } from '@ant-design/icons'
 import { useLocale } from '@/contexts/LocaleContext'
+import styles from '@/styles/components/sidebar.module.css'
 
 const { Sider } = Layout
 
@@ -105,32 +106,13 @@ export function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       trigger={null}
       width={260}
       collapsedWidth={80}
-      style={{
-        background: 'var(--sidebar-bg)',
-        height: '100vh',
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        zIndex: 100,
-        borderRight: '1px solid var(--sidebar-border)',
-        overflow: 'hidden'
-      }}
+      className={`${styles.sider} ${collapsed ? styles.siderCollapsed : ''}`}
     >
-      <div
-        style={{
-          height: 64,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderBottom: '1px solid var(--sidebar-border)'
-        }}
-      >
+      <div className={styles.logoSection}>
         {collapsed ? (
-          <span style={{ color: 'var(--sidebar-text)', fontSize: 20, fontWeight: 'bold' }}>W</span>
+          <span className={styles.logoIcon}>W</span>
         ) : (
-          <h1 style={{ color: 'var(--sidebar-text)', fontSize: 18, fontWeight: 600, margin: 0 }}>
-            {t('sidebar.title')}
-          </h1>
+          <h1 className={styles.logoText}>{t('sidebar.title')}</h1>
         )}
       </div>
 
@@ -141,19 +123,11 @@ export function Sidebar({ collapsed, onCollapse }: SidebarProps) {
         defaultOpenKeys={['components', 'system', 'settings']}
         items={menuItems}
         inlineCollapsed={collapsed}
-        style={{ borderRight: 0 }}
+        className={styles.menu}
       />
 
       {!collapsed && (
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 16,
-            left: 16,
-            fontSize: 12,
-            color: 'var(--sidebar-footer)'
-          }}
-        >
+        <div className={styles.footer}>
           <p>Tailwind v4</p>
           <p>Next.js 16</p>
         </div>

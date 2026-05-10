@@ -13,11 +13,10 @@ import {
   SunOutlined,
   MoonOutlined
 } from '@ant-design/icons'
+import styles from '@/styles/components/header.module.css'
 
 export function Header() {
   const { locale, setLocale, appTheme, setAppTheme, t, settings, toggleCollapse } = useLocale()
-
-  const sidebarWidth = settings.collapsed ? 80 : 260
 
   const localeItems: MenuProps['items'] = [
     { key: 'zhCN', label: t('locale.zhCN') },
@@ -52,30 +51,15 @@ export function Header() {
   const isDark = appTheme === 'dark'
 
   return (
-    <div
-      style={{
-        height: 64,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 24px',
-        paddingLeft: sidebarWidth + 24,
-        background: 'var(--header-bg)',
-        borderBottom: '1px solid var(--header-border)',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 99,
-        transition: 'padding-left 0.2s'
-      }}
-    >
-      <Button
-        type='text'
-        icon={settings.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        onClick={toggleCollapse}
-        style={{ fontSize: 16, color: 'var(--header-icon)' }}
-      />
+    <header className={styles.header}>
+      <div className={styles.leftSection}>
+        <Button
+          type='text'
+          icon={settings.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={toggleCollapse}
+          className={styles.menuBtn}
+        />
+      </div>
 
       <Space size='middle'>
         <Dropdown
@@ -86,26 +70,18 @@ export function Header() {
           }}
           trigger={['click']}
         >
-          <Button
-            type='text'
-            icon={isDark ? <SunOutlined /> : <MoonOutlined />}
-            style={{ fontSize: 16, color: 'var(--header-icon)' }}
-          />
+          <Button type='text' icon={isDark ? <SunOutlined /> : <MoonOutlined />} className={styles.iconBtn} />
         </Dropdown>
         <Dropdown
-          menu={{
-            items: localeItems,
-            selectedKeys: [locale],
-            onClick: ({ key }) => setLocale(key as 'zhCN' | 'enUS')
-          }}
+          menu={{ items: localeItems, selectedKeys: [locale], onClick: ({ key }) => setLocale(key as 'zhCN' | 'enUS') }}
           trigger={['click']}
         >
-          <Button type='text' icon={<GlobalOutlined />} style={{ fontSize: 16, color: 'var(--header-icon)' }} />
+          <Button type='text' icon={<GlobalOutlined />} className={styles.iconBtn} />
         </Dropdown>
         <Dropdown menu={{ items: userMenuItems }} placement='bottomRight'>
-          <Avatar style={{ backgroundColor: '#1677ff', cursor: 'pointer' }} icon={<UserOutlined />} />
+          <Avatar className={styles.avatar} icon={<UserOutlined />} />
         </Dropdown>
       </Space>
-    </div>
+    </header>
   )
 }

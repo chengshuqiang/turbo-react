@@ -66,6 +66,9 @@
 
 @layer utilities {
   :root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 80px;
+    --header-height: 64px;
     --background: #f5f5f5;
     --foreground: #171717;
     --header-bg: #ffffff;

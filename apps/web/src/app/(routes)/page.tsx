@@ -4,6 +4,7 @@ import { Button, Card, Row, Col, Statistic, Table, Tag, Typography } from 'antd'
 import type { TableColumnsType } from 'antd'
 import { UserOutlined, RiseOutlined, DollarOutlined, TeamOutlined } from '@ant-design/icons'
 import { useLocale } from '@/contexts/LocaleContext'
+import styles from '@/styles/pages/page.module.css'
 
 const { Title, Text } = Typography
 
@@ -38,7 +39,7 @@ export default function Home() {
 
   return (
     <div>
-      <div style={{ marginBottom: 24 }}>
+      <div className={styles.pageHeader}>
         <Title level={3} style={{ margin: 0 }}>
           {t('home.title')}
         </Title>

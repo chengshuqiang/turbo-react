@@ -45,8 +45,8 @@ export default function MockApiDocs() {
               </tr>
             </thead>
             <tbody>
-              {userApiExamples.map(api => (
-                <tr key={api.path}>
+              {userApiExamples.map((api, idx) => (
+                <tr key={`user-${api.method}-${idx}`}>
                   <td>
                     <code>{api.method}</code>
                   </td>
@@ -89,8 +89,8 @@ export default function MockApiDocs() {
               </tr>
             </thead>
             <tbody>
-              {postApiExamples.map(api => (
-                <tr key={api.path}>
+              {postApiExamples.map((api, idx) => (
+                <tr key={`post-${api.method}-${idx}`}>
                   <td>
                     <code>{api.method}</code>
                   </td>

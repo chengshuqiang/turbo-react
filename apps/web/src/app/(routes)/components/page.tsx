@@ -3,6 +3,7 @@
 import { Typography, Card, Row, Col, Button, Input, Select, Switch, Slider, Rate } from 'antd'
 import { useState } from 'react'
 import { useLocale } from '@/contexts/LocaleContext'
+import styles from '@/styles/pages/page.module.css'
 
 const { Title, Text } = Typography
 
@@ -16,7 +17,7 @@ export default function ComponentsPage() {
 
   return (
     <div>
-      <div style={{ marginBottom: 24 }}>
+      <div className={styles.pageHeader}>
         <Title level={3} style={{ margin: 0 }}>
           {t('components.title')}
         </Title>
@@ -26,7 +27,7 @@ export default function ComponentsPage() {
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={12}>
           <Card title={t('components.buttons')} size='small'>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            <div className={styles.componentGrid}>
               <Button type='primary'>{t('components.primaryButton')}</Button>
               <Button>{t('components.defaultButton')}</Button>
               <Button type='dashed'>{t('components.dashedButton')}</Button>
@@ -39,12 +40,13 @@ export default function ComponentsPage() {
 
         <Col xs={24} lg={12}>
           <Card title={t('components.input')} size='small'>
-            <Input
-              placeholder={t('components.inputPlaceholder')}
-              value={inputValue}
-              onChange={e => setInputValue(e.target.value)}
-              style={{ marginBottom: 12 }}
-            />
+            <div className={styles.inputGroup}>
+              <Input
+                placeholder={t('components.inputPlaceholder')}
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)}
+              />
+            </div>
             <Input.Search
               placeholder={t('components.search')}
               enterButton={t('components.search')}
@@ -59,7 +61,7 @@ export default function ComponentsPage() {
             <Select
               value={selectValue}
               onChange={setSelectValue}
-              style={{ width: '100%' }}
+              className={styles.inputFullWidth}
               options={[
                 { value: 'option1', label: t('components.option1') },
                 { value: 'option2', label: t('components.option2') },
@@ -71,7 +73,7 @@ export default function ComponentsPage() {
 
         <Col xs={24} lg={12}>
           <Card title={t('components.switch')} size='small'>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div className={styles.componentRow}>
               <Switch checked={switchValue} onChange={setSwitchValue} />
               <Text>{switchValue ? t('components.on') : t('components.off')}</Text>
             </div>
@@ -90,7 +92,7 @@ export default function ComponentsPage() {
         <Col xs={24} lg={12}>
           <Card title={t('components.rating')} size='small'>
             <Rate value={rateValue} onChange={setRateValue} />
-            <div style={{ marginTop: 8 }}>
+            <div className={styles.ratingValue}>
               <Text type='secondary'>
                 {t('components.currentRating')}: {rateValue} {t('components.star')}
               </Text>

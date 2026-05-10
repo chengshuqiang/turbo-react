@@ -54,6 +54,8 @@ export default {
     title: 'Web App'
   },
   settings: {
+    title: 'Settings',
+    description: 'Configure system settings',
     basicInfo: 'Basic Info',
     appearance: 'Appearance',
     notification: 'Notification',
@@ -67,7 +69,18 @@ export default {
     smsNotification: 'SMS Notification',
     pushNotification: 'Push Notification',
     twoFactor: 'Two-Factor Authentication',
-    captcha: 'Captcha'
+    captcha: 'Captcha',
+    username: 'Username',
+    email: 'Email',
+    theme: 'Theme',
+    language: 'Language',
+    light: 'Light',
+    dark: 'Dark',
+    enableNotifications: 'Enable Notifications',
+    save: 'Save',
+    reset: 'Reset',
+    saved: 'Saved successfully',
+    validationFailed: 'Validation failed'
   },
   home: {
     title: 'Dashboard',

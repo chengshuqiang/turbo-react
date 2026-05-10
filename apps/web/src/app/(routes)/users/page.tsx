@@ -5,6 +5,7 @@ import type { TableColumnsType } from 'antd'
 import { useState } from 'react'
 import { PlusOutlined, SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useLocale } from '@/contexts/LocaleContext'
+import styles from '@/styles/pages/page.module.css'
 
 const { Title, Text } = Typography
 
@@ -84,7 +85,7 @@ export default function UsersPage() {
 
   return (
     <div>
-      <div style={{ marginBottom: 24 }}>
+      <div className={styles.pageHeader}>
         <Title level={3} style={{ margin: 0 }}>
           {t('users.title')}
         </Title>
@@ -92,11 +93,11 @@ export default function UsersPage() {
       </div>
 
       <Card>
-        <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between' }}>
+        <div className={styles.tableToolbar}>
           <Input
             placeholder={t('users.searchPlaceholder')}
             prefix={<SearchOutlined />}
-            style={{ width: 250 }}
+            className={styles.searchInput}
             value={searchText}
             onChange={e => setSearchText(e.target.value)}
           />
