@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "李四",
+      "email": "lisi@example.com",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "王五",
+      "email": "wangwu@example.com",
+      "role": "user"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "第一篇文章",
+      "content": "这是第一篇文章的内容",
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "title": "第二篇文章",
+      "content": "这是第二篇文章的内容",
+      "authorId": 2
+    },
+    {
+      "id": 3,
+      "title": "第三篇文章",
+      "content": "这是第三篇文章的内容",
+      "authorId": 1
+    }
+  ]
+}
