@@ -6,12 +6,12 @@
 
 .breadcrumb {
   margin-bottom: 24px;
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-base);
+  color: var(--text-color-secondary);
 }
 
 .breadcrumb a {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -24,8 +24,8 @@
 }
 
 .title {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 32px;
 }
 
@@ -34,11 +34,11 @@
 }
 
 .sectionTitle {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .cardGrid {
@@ -50,9 +50,9 @@
 
 .card {
   padding: 24px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
 }
 
 .cardHeader {
@@ -63,22 +63,14 @@
 }
 
 .card h3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   margin: 0;
 }
 
-.badge {
-  font-size: 11px;
-  padding: 4px 8px;
-  background: #f3f4f6;
-  border-radius: 4px;
-  color: #667eea;
-}
-
 .card p {
-  color: #666;
-  font-size: 14px;
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-base);
   margin-bottom: 12px;
 }
 
@@ -95,43 +87,51 @@
 }
 
 .card li::before {
-  content: "✓ ";
+  content: '✓ ';
   color: #10b981;
   font-weight: bold;
 }
 
+.badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  color: var(--primary-color);
+}
+
 .component {
   padding: 24px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--background-color-light);
   margin-bottom: 16px;
 }
 
 .component h3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   margin: 0 0 8px 0;
-  color: #111;
+  color: var(--text-color);
 }
 
 .desc {
-  color: #666;
-  font-size: 14px;
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-base);
   margin-bottom: 16px;
 }
 
 .usage h4 {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 8px;
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .usage pre {
-  background: #1e1e1e;
+  background: var(--background-color-dark);
   border-radius: 6px;
-  padding: 16px;
+  padding: var(--spacing-unit);
   overflow-x: auto;
   margin: 0;
 }
@@ -139,7 +139,7 @@
 .usage code {
   color: #d4d4d4;
   font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }
 
 .rules {
@@ -149,15 +149,15 @@
 
 .rules li {
   padding: 12px 16px;
-  background: #f9fafb;
+  background: var(--background-color-light);
   border-radius: 6px;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
 }
 
 .rules li::before {
-  content: "→ ";
-  color: #667eea;
+  content: '→ ';
+  color: var(--primary-color);
   font-weight: bold;
 }
 
@@ -165,6 +165,6 @@
   background: #f3f4f6;
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 13px;
-  color: #667eea;
+  font-size: var(--font-size-sm);
+  color: var(--primary-color);
 }

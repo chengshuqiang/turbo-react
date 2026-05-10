@@ -6,12 +6,12 @@
 
 .breadcrumb {
   margin-bottom: 24px;
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-base);
+  color: var(--text-color-secondary);
 }
 
 .breadcrumb a {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -24,8 +24,8 @@
 }
 
 .title {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 32px;
 }
 
@@ -34,69 +34,69 @@
 }
 
 .sectionTitle {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .desc {
-  color: #666;
+  color: var(--text-color-secondary);
   font-size: 15px;
   margin-bottom: 16px;
 }
 
 .file {
-  background: #f9fafb;
-  border-radius: 8px;
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
   overflow: hidden;
   margin-bottom: 16px;
 }
 
-.fileHeader {
+.file .fileHeader {
   padding: 12px 16px;
   background: #f3f4f6;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.fileHeader code {
-  font-size: 13px;
-  color: #667eea;
+.file .fileHeader code {
+  font-size: var(--font-size-sm);
+  color: var(--primary-color);
   font-family: 'Consolas', 'Monaco', monospace;
 }
 
 .file pre {
   margin: 0;
-  padding: 16px;
+  padding: var(--spacing-unit);
 }
 
 .file code {
   color: #d4d4d4;
   font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   line-height: 1.6;
 }
 
 .typeCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 20px;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit-lg);
   margin-bottom: 12px;
 }
 
 .typeCard h3 {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   margin: 0 0 12px 0;
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .typeCard pre {
-  background: #1e1e1e;
+  background: var(--background-color-dark);
   border-radius: 6px;
-  padding: 16px;
+  padding: var(--spacing-unit);
   margin: 0;
   overflow-x: auto;
 }
@@ -104,27 +104,27 @@
 .typeCard code {
   color: #d4d4d4;
   font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }
 
 .example {
-  background: #f9fafb;
-  border-radius: 8px;
-  padding: 20px;
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit-lg);
   margin-bottom: 16px;
 }
 
 .example h3 {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   margin: 0 0 12px 0;
-  color: #111;
+  color: var(--text-color);
 }
 
 .example pre {
-  background: #1e1e1e;
+  background: var(--background-color-dark);
   border-radius: 6px;
-  padding: 16px;
+  padding: var(--spacing-unit);
   margin: 0;
   overflow-x: auto;
 }
@@ -132,32 +132,32 @@
 .example code {
   color: #d4d4d4;
   font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }
 
 .contextCard {
-  background: #f9fafb;
-  border-radius: 8px;
-  padding: 20px;
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit-lg);
 }
 
 .contextCard h3 {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   margin: 0 0 8px 0;
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .contextCard p {
-  color: #666;
-  font-size: 14px;
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-base);
   margin-bottom: 12px;
 }
 
 .contextCard pre {
-  background: #1e1e1e;
+  background: var(--background-color-dark);
   border-radius: 6px;
-  padding: 16px;
+  padding: var(--spacing-unit);
   margin: 0;
   overflow-x: auto;
 }
@@ -165,5 +165,5 @@
 .contextCard code {
   color: #d4d4d4;
   font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }

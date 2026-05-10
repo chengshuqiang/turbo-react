@@ -1,0 +1,30 @@
+.file {
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.file .fileHeader {
+  padding: 12px 16px;
+  background: #f3f4f6;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.file .fileHeader code {
+  font-size: var(--font-size-sm);
+  color: var(--primary-color);
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.file pre {
+  margin: 0;
+  padding: var(--spacing-unit);
+}
+
+.file code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}

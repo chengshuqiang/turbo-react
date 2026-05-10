@@ -1,0 +1,25 @@
+.rule {
+  padding: var(--spacing-unit-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--background-color-light);
+}
+
+.rule h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+}
+
+.rule ul,
+.rule ol {
+  margin: 0;
+  padding-left: 20px;
+  font-size: var(--font-size-base);
+  color: #4b5563;
+}
+
+.rule li {
+  padding: 4px 0;
+}

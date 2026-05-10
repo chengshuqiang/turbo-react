@@ -1,0 +1,44 @@
+.component {
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit-lg);
+  margin-bottom: 20px;
+}
+
+.component h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 8px 0;
+  color: var(--text-color);
+}
+
+.component .desc {
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-base);
+  margin-bottom: 16px;
+}
+
+.usage {
+  margin-top: 16px;
+}
+
+.usage h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+}
+
+.usage pre {
+  background: var(--background-color-dark);
+  border-radius: 6px;
+  padding: var(--spacing-unit);
+  margin: 0;
+  overflow-x: auto;
+}
+
+.usage code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: var(--font-size-sm);
+}

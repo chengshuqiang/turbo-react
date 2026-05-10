@@ -30,25 +30,23 @@ export function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
-        <Link href="/" className={styles.logo}>
+        <Link href='/' className={styles.logo}>
           📚 项目文档
         </Link>
       </div>
       <nav className={styles.nav}>
-        {navItems.map((item) => (
+        {navItems.map(item => (
           <div key={item.href} className={styles.navGroup}>
             <Link href={item.href} className={styles.navGroupTitle}>
               {item.title}
             </Link>
             {item.children && (
               <ul className={styles.navList}>
-                {item.children.map((child) => (
+                {item.children.map(child => (
                   <li key={child.href}>
                     <Link
                       href={child.href}
-                      className={`${styles.navLink} ${
-                        pathname === child.href ? styles.active : ''
-                      }`}
+                      className={`${styles.navLink} ${pathname === child.href ? styles.active : ''}`}
                     >
                       {child.title}
                     </Link>

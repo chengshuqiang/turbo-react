@@ -1,73 +1,52 @@
-import Link from 'next/link'
-import styles from '@/styles/pages/web-api.module.css'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { DocSection } from '@/components/ui/DocSection'
+import { TypeCard } from '@/components/ui/TypeCard'
+import { FileBlock } from '@/components/ui/FileBlock'
+import { ExampleBlock } from '@/components/ui/ExampleBlock'
+import { InfoCard } from '@/components/ui/InfoCard'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import { PageLayout } from '@/components/ui/PageLayout'
+
+const breadcrumbItems = [{ label: 'Web 文档', href: '/web' }, { label: 'API 文档' }]
 
 export default function ApiDocs() {
   return (
-    <div className={styles.container}>
-      <div className={styles.breadcrumb}>
-        <Link href="/web">Web 文档</Link>
-        <span className={styles.separator}>/</span>
-        <span>API 文档</span>
-      </div>
+    <PageLayout title='API 文档' breadcrumb={<Breadcrumb items={breadcrumbItems} />}>
+      <DocSection title='服务层 (Services)'>
+        <p>所有 API 调用统一通过 services 层管理</p>
 
-      <h1 className={styles.title}>API 文档</h1>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>服务层 (Services)</h2>
-        <p className={styles.desc}>所有 API 调用统一通过 services 层管理</p>
-
-        <div className={styles.file}>
-          <div className={styles.fileHeader}>
-            <code>src/services/api.ts</code>
-          </div>
-          <pre><code>{`// 基础配置
+        <FileBlock filePath='src/services/api.ts'>{`// 基础配置
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api'
 
 // 请求方法
 export function get<T>(endpoint, params?)
 export function post<T>(endpoint, data?)
 export function put<T>(endpoint, data?)
-export function del<T>(endpoint)`}</code></pre>
-        </div>
-      </section>
+export function del<T>(endpoint)`}</FileBlock>
+      </DocSection>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>类型定义</h2>
-
-        <div className={styles.typeCard}>
-          <h3>ApiResponse</h3>
-          <pre><code>{`interface ApiResponse<T = unknown> {
+      <DocSection title='类型定义'>
+        <TypeCard title='ApiResponse'>{`interface ApiResponse<T = unknown> {
   code: number
   message: string
   data: T
-}`}</code></pre>
-        </div>
+}`}</TypeCard>
 
-        <div className={styles.typeCard}>
-          <h3>PaginationParams</h3>
-          <pre><code>{`interface PaginationParams {
+        <TypeCard title='PaginationParams'>{`interface PaginationParams {
   page: number
   pageSize: number
-}`}</code></pre>
-        </div>
+}`}</TypeCard>
 
-        <div className={styles.typeCard}>
-          <h3>PaginationResponse</h3>
-          <pre><code>{`interface PaginationResponse<T> {
+        <TypeCard title='PaginationResponse'>{`interface PaginationResponse<T> {
   list: T[]
   total: number
   page: number
   pageSize: number
-}`}</code></pre>
-        </div>
-      </section>
+}`}</TypeCard>
+      </DocSection>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>使用示例</h2>
-
-        <div className={styles.example}>
-          <h3>GET 请求</h3>
-          <pre><code>{`import { get } from '@/services/api'
+      <DocSection title='使用示例'>
+        <ExampleBlock title='GET 请求'>{`import { get } from '@/services/api'
 
 interface User {
   id: number
@@ -75,29 +54,22 @@ interface User {
 }
 
 const response = await get<User[]>('/users')
-const users = response.data`}</code></pre>
-        </div>
+const users = response.data`}</ExampleBlock>
 
-        <div className={styles.example}>
-          <h3>POST 请求</h3>
-          <pre><code>{`import { post } from '@/services/api'
+        <ExampleBlock title='POST 请求'>{`import { post } from '@/services/api'
 
 const newUser = { name: 'John', email: 'john@example.com' }
-const response = await post<User>('/users', newUser)`}</code></pre>
-        </div>
-      </section>
+const response = await post<User>('/users', newUser)`}</ExampleBlock>
+      </DocSection>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Context API</h2>
-
-        <div className={styles.contextCard}>
-          <h3>LocaleContext</h3>
+      <DocSection title='Context API'>
+        <InfoCard title='LocaleContext' variant='info'>
           <p>国际化上下文，提供语言切换功能</p>
-          <pre><code>{`import { useLocale } from '@/contexts/LocaleContext'
+          <CodeBlock>{`import { useLocale } from '@/contexts/LocaleContext'
 
-const { locale, setLocale, antdLocale } = useLocale()`}</code></pre>
-        </div>
-      </section>
-    </div>
+const { locale, setLocale, antdLocale } = useLocale()`}</CodeBlock>
+        </InfoCard>
+      </DocSection>
+    </PageLayout>
   )
 }

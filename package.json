@@ -16,5 +16,13 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "postcss-nested": "^7.0.2",
+    "postcss-preset-env": "^11.2.1",
+    "tailwindcss": "^4.3.0"
   }
 }

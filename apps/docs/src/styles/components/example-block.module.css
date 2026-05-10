@@ -1,0 +1,27 @@
+.example {
+  background: var(--background-color-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit-lg);
+  margin-bottom: 16px;
+}
+
+.example h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 12px 0;
+  color: var(--text-color);
+}
+
+.example pre {
+  background: var(--background-color-dark);
+  border-radius: 6px;
+  padding: var(--spacing-unit);
+  margin: 0;
+  overflow-x: auto;
+}
+
+.example code {
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: var(--font-size-sm);
+}

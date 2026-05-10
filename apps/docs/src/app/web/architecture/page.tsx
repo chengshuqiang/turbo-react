@@ -1,20 +1,17 @@
-import Link from 'next/link'
-import styles from '@/styles/pages/web-architecture.module.css'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { DocSection } from '@/components/ui/DocSection'
+import { TechCard } from '@/components/ui/TechCard'
+import { PageLayout } from '@/components/ui/PageLayout'
+import styles from '@/styles/components/common.module.css'
+
+const breadcrumbItems = [{ label: 'Web 文档', href: '/web' }, { label: '架构设计' }]
 
 export default function ArchitectureDocs() {
   return (
-    <div className={styles.container}>
-      <div className={styles.breadcrumb}>
-        <Link href="/web">Web 文档</Link>
-        <span className={styles.separator}>/</span>
-        <span>架构设计</span>
-      </div>
-
-      <h1 className={styles.title}>架构设计</h1>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>项目结构</h2>
-        <pre className={styles.codeBlock}><code>{`apps/web/
+    <PageLayout title='架构设计' breadcrumb={<Breadcrumb items={breadcrumbItems} />}>
+      <DocSection title='项目结构'>
+        <pre className={styles.codeBlock}>
+          <code>{`apps/web/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── layout.tsx          # 根布局
@@ -34,47 +31,51 @@ export default function ArchitectureDocs() {
 │   ├── i18n/                   # 国际化资源
 │   └── styles/                 # 样式文件
 ├── tests/                      # 测试文件
-└── public/                     # 静态资源`}</code></pre>
-      </section>
+└── public/                     # 静态资源`}</code>
+        </pre>
+      </DocSection>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>技术栈</h2>
+      <DocSection title='技术栈'>
         <div className={styles.techGrid}>
-          <div className={styles.techCard}>
-            <h3>框架</h3>
+          <TechCard title='框架'>
             <ul>
               <li>Next.js 16 (App Router)</li>
               <li>React 19</li>
               <li>TypeScript 5.9</li>
             </ul>
-          </div>
-          <div className={styles.techCard}>
-            <h3>UI 库</h3>
+          </TechCard>
+          <TechCard title='UI 库'>
             <ul>
               <li>Ant Design 6</li>
               <li>@ant-design/nextjs-registry</li>
             </ul>
-          </div>
-          <div className={styles.techCard}>
-            <h3>工具</h3>
+          </TechCard>
+          <TechCard title='工具'>
             <ul>
               <li>Turborepo</li>
               <li>pnpm</li>
               <li>ESLint</li>
             </ul>
-          </div>
+          </TechCard>
         </div>
-      </section>
+      </DocSection>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>核心原则</h2>
+      <DocSection title='核心原则'>
         <ul className={styles.list}>
-          <li><strong>按功能分类</strong>：组件分为 ui（无业务逻辑）和 business（有业务逻辑）</li>
-          <li><strong>样式分离</strong>：CSS 模块按 pages 和 components 分类管理</li>
-          <li><strong>类型安全</strong>：使用 TypeScript 严格模式</li>
-          <li><strong>国际化</strong>：使用 React Context + Ant Design Locale</li>
+          <li>
+            <strong>按功能分类</strong>：组件分为 ui（无业务逻辑）和 business（有业务逻辑）
+          </li>
+          <li>
+            <strong>样式分离</strong>：CSS 模块按 pages 和 components 分类管理
+          </li>
+          <li>
+            <strong>类型安全</strong>：使用 TypeScript 严格模式
+          </li>
+          <li>
+            <strong>国际化</strong>：使用 React Context + Ant Design Locale
+          </li>
         </ul>
-      </section>
-    </div>
+      </DocSection>
+    </PageLayout>
   )
 }

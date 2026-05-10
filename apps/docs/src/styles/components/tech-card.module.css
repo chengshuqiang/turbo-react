@@ -1,0 +1,30 @@
+.techCard {
+  padding: var(--spacing-unit-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--background-color-light);
+}
+
+.techCard h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+.techCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.techCard li {
+  padding: 4px 0;
+  font-size: var(--font-size-base);
+  color: #4b5563;
+}
+
+.techCard li::before {
+  content: '• ';
+  color: var(--primary-color);
+}
