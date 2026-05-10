@@ -39,8 +39,12 @@ export default function Home() {
               查看 Web 项目文档 →
             </Link>
           </li>
+          <li>
+            <Link href='/mock' className={styles.highlight}>
+              查看 Mock Server 文档 →
+            </Link>
+          </li>
           <li>Get started by editing apps/docs/app/page.tsx</li>
-          <li>Save and see your changes instantly.</li>
         </ol>
 
         <div className={styles.ctas}>

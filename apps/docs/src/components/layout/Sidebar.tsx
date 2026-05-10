@@ -21,6 +21,16 @@ const navItems: NavItem[] = [
       { title: 'API 文档', href: '/web/api' },
       { title: '开发指南', href: '/web/guides' }
     ]
+  },
+  {
+    title: 'Mock Server',
+    href: '/mock',
+    children: [
+      { title: '概述', href: '/mock' },
+      { title: '快速开始', href: '/mock/quickstart' },
+      { title: 'API 文档', href: '/mock/api' },
+      { title: '开发指南', href: '/mock/development' }
+    ]
   }
 ]
 
