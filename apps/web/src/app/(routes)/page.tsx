@@ -46,7 +46,7 @@ export default function Home() {
         <Text type='secondary'>{t('home.welcome')}</Text>
       </div>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+      <Row gutter={[12, 12]} style={{ marginBottom: 12 }}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic title={t('home.totalUsers')} value={1234} prefix={<UserOutlined />} />
@@ -76,7 +76,7 @@ export default function Home() {
 
       <Card
         title={t('home.userList')}
-        style={{ marginBottom: 24 }}
+        style={{ marginBottom: 12 }}
         extra={<Button type='primary'>{t('home.addUser')}</Button>}
       >
         <Table<DataType> columns={columns} dataSource={data} pagination={false} />

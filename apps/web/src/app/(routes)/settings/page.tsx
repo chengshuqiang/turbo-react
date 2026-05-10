@@ -43,7 +43,7 @@ export default function SettingsPage() {
       </div>
 
       <Form form={form} layout='vertical'>
-        <Card title={t('settings.basicInfo')} className={styles.cardMargin}>
+        <Card title={t('settings.basicInfo')} style={{ marginBottom: 12 }}>
           <Form.Item label={t('settings.username')} name='username' rules={[{ required: true }]}>
             <Input />
           </Form.Item>
@@ -52,7 +52,7 @@ export default function SettingsPage() {
           </Form.Item>
         </Card>
 
-        <Card title={t('settings.appearance')} className={styles.cardMargin}>
+        <Card title={t('settings.appearance')} style={{ marginBottom: 12 }}>
           <Form.Item label={t('settings.theme')}>
             <Space>
               <Button type={settings.theme === 'light' ? 'primary' : 'default'} onClick={() => setAppTheme('light')}>
@@ -75,7 +75,7 @@ export default function SettingsPage() {
           </Form.Item>
         </Card>
 
-        <Card title={t('settings.notification')} className={styles.cardMargin}>
+        <Card title={t('settings.notification')} style={{ marginBottom: 12 }}>
           <Form.Item label={t('settings.enableNotifications')} name='notifications' valuePropName='checked'>
             <Switch />
           </Form.Item>

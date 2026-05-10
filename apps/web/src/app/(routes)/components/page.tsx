@@ -24,7 +24,7 @@ export default function ComponentsPage() {
         <Text type='secondary'>{t('components.description')}</Text>
       </div>
 
-      <Row gutter={[16, 16]}>
+      <Row gutter={[12, 12]}>
         <Col xs={24} lg={12}>
           <Card title={t('components.buttons')} size='small'>
             <div className={styles.componentGrid}>
