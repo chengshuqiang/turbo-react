@@ -23,86 +23,78 @@ const { Sider } = Layout
 
 type MenuItem = Required<MenuProps>['items'][number]
 
-const getMenuItems = (): MenuItem[] => [
-  {
-    key: '/',
-    icon: <HomeOutlined />,
-    label: <Link href='/'>首页</Link>
-  },
-  {
-    key: 'components',
-    icon: <AppstoreOutlined />,
-    label: '组件示例',
-    children: [
-      {
-        key: '/components',
-        label: <Link href='/components'>基础组件</Link>,
-        icon: <TableOutlined />
-      },
-      {
-        key: '/components/form',
-        label: <Link href='/components/form'>表单组件</Link>,
-        icon: <FormOutlined />
-      }
-    ]
-  },
-  {
-    key: 'system',
-    icon: <SettingOutlined />,
-    label: '系统管理',
-    children: [
-      {
-        key: '/users',
-        label: <Link href='/users'>用户管理</Link>,
-        icon: <TeamOutlined />
-      },
-      {
-        key: '/roles',
-        label: <Link href='/users'>角色管理</Link>,
-        icon: <UserOutlined />
-      },
-      {
-        key: '/permissions',
-        label: <Link href='/users'>权限管理</Link>,
-        icon: <SafetyOutlined />
-      }
-    ]
-  },
-  {
-    key: 'settings',
-    icon: <SettingOutlined />,
-    label: '系统设置',
-    children: [
-      {
-        key: '/settings',
-        label: <Link href='/settings'>基本设置</Link>,
-        icon: <GlobalOutlined />
-      },
-      {
-        key: '/settings/notification',
-        label: <Link href='/settings'>通知设置</Link>,
-        icon: <BellOutlined />
-      }
-    ]
-  }
-]
-
-interface SidebarProps {
-  collapsed: boolean
-  onCollapse: (collapsed: boolean) => void
-  placement?: 'left' | 'right'
-}
-
-export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarProps) {
+export function Sidebar({ collapsed, onCollapse }: SidebarProps) {
   const pathname = usePathname()
-  const { appTheme } = useLocale()
+  const { appTheme, t } = useLocale()
 
   const isDark = appTheme === 'dark'
 
   const siderTheme = isDark ? 'dark' : 'light'
   const menuTheme = isDark ? 'dark' : 'light'
 
-  const menuItems = getMenuItems()
+  const menuItems: MenuItem[] = [
+    {
+      key: '/',
+      icon: <HomeOutlined />,
+      label: <Link href='/'>{t('menu.home')}</Link>
+    },
+    {
+      key: 'components',
+      icon: <AppstoreOutlined />,
+      label: t('menu.components'),
+      children: [
+        {
+          key: '/components',
+          label: <Link href='/components'>{t('menu.basicComponents')}</Link>,
+          icon: <TableOutlined />
+        },
+        {
+          key: '/components/form',
+          label: <Link href='/components/form'>{t('menu.formComponents')}</Link>,
+          icon: <FormOutlined />
+        }
+      ]
+    },
+    {
+      key: 'system',
+      icon: <SettingOutlined />,
+      label: t('menu.systemManagement'),
+      children: [
+        {
+          key: '/users',
+          label: <Link href='/users'>{t('menu.userManagement')}</Link>,
+          icon: <TeamOutlined />
+        },
+        {
+          key: '/roles',
+          label: <Link href='/users'>{t('menu.roleManagement')}</Link>,
+          icon: <UserOutlined />
+        },
+        {
+          key: '/permissions',
+          label: <Link href='/users'>{t('menu.permissionManagement')}</Link>,
+          icon: <SafetyOutlined />
+        }
+      ]
+    },
+    {
+      key: 'settings',
+      icon: <SettingOutlined />,
+      label: t('menu.systemSettings'),
+      children: [
+        {
+          key: '/settings',
+          label: <Link href='/settings'>{t('menu.basic')}</Link>,
+          icon: <GlobalOutlined />
+        },
+        {
+          key: '/settings/notification',
+          label: <Link href='/settings'>{t('menu.notification')}</Link>,
+          icon: <BellOutlined />
+        }
+      ]
+    }
+  ]
 
   return (
     <Sider
@@ -117,7 +109,7 @@ export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarPr
         background: 'var(--sidebar-bg)',
         height: '100vh',
         position: 'fixed',
-        [placement]: 0,
+        left: 0,
         top: 0,
         zIndex: 100,
         borderRight: '1px solid var(--sidebar-border)',
@@ -136,7 +128,9 @@ export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarPr
         {collapsed ? (
           <span style={{ color: 'var(--sidebar-text)', fontSize: 20, fontWeight: 'bold' }}>W</span>
         ) : (
-          <h1 style={{ color: 'var(--sidebar-text)', fontSize: 18, fontWeight: 600, margin: 0 }}>Web 应用</h1>
+          <h1 style={{ color: 'var(--sidebar-text)', fontSize: 18, fontWeight: 600, margin: 0 }}>
+            {t('sidebar.title')}
+          </h1>
         )}
       </div>
 
@@ -166,4 +160,9 @@ export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarPr
       )}
     </Sider>
   )
+}
+
+interface SidebarProps {
+  collapsed: boolean
+  onCollapse: (collapsed: boolean) => void
 }

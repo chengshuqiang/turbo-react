@@ -1,27 +1,44 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { ConfigProvider, theme } from 'antd'
-import zhCN from 'antd/locale/zh_CN'
-import enUS from 'antd/locale/en_US'
+import zhCNAntd from 'antd/locale/zh_CN'
+import enUSAntd from 'antd/locale/en_US'
 import type { Locale } from 'antd/es/locale'
+import zhCN from '@/i18n/locales/zh-CN'
+import enUS from '@/i18n/locales/en-US'
 
-type LocaleType = 'zhCN' | 'enUS'
-type ThemeType = 'light' | 'dark'
+export type ThemeType = 'light' | 'dark'
+export type LocaleType = 'zhCN' | 'enUS'
+
+interface AppSettings {
+  theme: ThemeType
+  locale: LocaleType
+  collapsed: boolean
+}
 
 interface LocaleContextType {
+  settings: AppSettings
+  updateSettings: (newSettings: Partial<AppSettings>) => void
+  toggleCollapse: () => void
   locale: LocaleType
   setLocale: (locale: LocaleType) => void
   antdLocale: Locale
   appTheme: ThemeType
   setAppTheme: (theme: ThemeType) => void
+  t: (key: string) => string
 }
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined)
 
-const localeMap: Record<LocaleType, Locale> = {
+const messagesMap = {
   zhCN,
   enUS
+}
+
+const localeMap: Record<LocaleType, Locale> = {
+  zhCN: zhCNAntd,
+  enUS: enUSAntd
 }
 
 const themeMap = {
@@ -29,16 +46,81 @@ const themeMap = {
   dark: theme.darkAlgorithm
 }
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<LocaleType>('zhCN')
-  const [appTheme, setAppTheme] = useState<ThemeType>('light')
+const defaultSettings: AppSettings = {
+  theme: 'light',
+  locale: 'zhCN',
+  collapsed: false
+}
 
-  const value = {
+export function LocaleProvider({ children }: { children: ReactNode }) {
+  const [settings, setSettings] = useState<AppSettings>(defaultSettings)
+
+  useEffect(() => {
+    const saved = localStorage.getItem('app-settings')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        const validSettings: AppSettings = {
+          theme: parsed.theme === 'light' || parsed.theme === 'dark' ? parsed.theme : defaultSettings.theme,
+          locale: parsed.locale === 'zhCN' || parsed.locale === 'enUS' ? parsed.locale : defaultSettings.locale,
+          collapsed: typeof parsed.collapsed === 'boolean' ? parsed.collapsed : defaultSettings.collapsed
+        }
+        setSettings(validSettings)
+      } catch {
+        console.error('Failed to parse app settings from localStorage')
+      }
+    }
+  }, [])
+
+  const updateSettings = (newSettings: Partial<AppSettings>) => {
+    const updated = { ...settings, ...newSettings }
+    setSettings(updated)
+    localStorage.setItem('app-settings', JSON.stringify(updated))
+  }
+
+  const toggleCollapse = () => {
+    updateSettings({ collapsed: !settings.collapsed })
+  }
+
+  const { theme: appTheme, locale } = settings
+
+  const setLocale = (newLocale: LocaleType) => {
+    updateSettings({ locale: newLocale })
+  }
+
+  const setAppTheme = (newTheme: ThemeType) => {
+    updateSettings({ theme: newTheme })
+  }
+
+  const t = (key: string): string => {
+    const keys = key.split('.')
+    let value: unknown = messagesMap[locale]
+
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = (value as Record<string, unknown>)[k]
+      } else {
+        return key
+      }
+    }
+
+    return typeof value === 'string' ? value : key
+  }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', appTheme)
+  }, [appTheme])
+
+  const value: LocaleContextType = {
+    settings,
+    updateSettings,
+    toggleCollapse,
     locale,
     setLocale,
     antdLocale: localeMap[locale],
     appTheme,
-    setAppTheme
+    setAppTheme,
+    t
   }
 
   return (

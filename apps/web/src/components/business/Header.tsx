@@ -3,7 +3,6 @@
 import { Avatar, Space, Dropdown, Button } from 'antd'
 import type { MenuProps } from 'antd'
 import { useLocale } from '@/contexts/LocaleContext'
-import { useAppSettings } from '@/contexts/AppSettingsContext'
 import {
   UserOutlined,
   SettingOutlined,
@@ -15,53 +14,38 @@ import {
   MoonOutlined
 } from '@ant-design/icons'
 
-const localeOptions = [
-  { value: 'zhCN', label: '中文' },
-  { value: 'enUS', label: 'English' }
-]
-
-const localeItems: MenuProps['items'] = localeOptions.map(option => ({
-  key: option.value,
-  label: option.label
-}))
-
-const themeOptions = [
-  { value: 'light', label: '浅色' },
-  { value: 'dark', label: '深色' }
-]
-
-const themeItems: MenuProps['items'] = themeOptions.map(option => ({
-  key: option.value,
-  label: option.label
-}))
-
 export function Header() {
-  const { locale, setLocale, appTheme, setAppTheme } = useLocale()
-  const { settings, updateSettings } = useAppSettings()
+  const { locale, setLocale, appTheme, setAppTheme, t, settings, toggleCollapse } = useLocale()
+
+  const localeItems: MenuProps['items'] = [
+    { key: 'zhCN', label: t('locale.zhCN') },
+    { key: 'enUS', label: t('locale.enUS') }
+  ]
+
+  const themeItems: MenuProps['items'] = [
+    { key: 'light', label: t('theme.light') },
+    { key: 'dark', label: t('theme.dark') }
+  ]
 
   const userMenuItems: MenuProps['items'] = [
     {
       key: 'profile',
       icon: <UserOutlined />,
-      label: '个人中心'
+      label: t('nav.profile')
     },
     {
       key: 'settings',
       icon: <SettingOutlined />,
-      label: '设置'
+      label: t('nav.settings')
     },
     { type: 'divider' },
     {
       key: 'logout',
       icon: <LogoutOutlined />,
-      label: '退出登录',
+      label: t('common.logout'),
       danger: true
     }
   ]
-
-  const handleToggleCollapse = () => {
-    updateSettings({ collapsed: !settings.collapsed })
-  }
 
   const isDark = appTheme === 'dark'
 
@@ -81,7 +65,7 @@ export function Header() {
       <Button
         type='text'
         icon={settings.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        onClick={handleToggleCollapse}
+        onClick={toggleCollapse}
         style={{ fontSize: 16, color: 'var(--header-icon)' }}
       />
 

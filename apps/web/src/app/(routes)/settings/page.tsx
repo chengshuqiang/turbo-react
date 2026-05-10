@@ -1,33 +1,30 @@
 'use client'
 
-import { Typography, Card, Form, Input, Switch, Select, Button, Space, ColorPicker, message } from 'antd'
+import { Typography, Card, Form, Input, Switch, Select, Button, Space, message } from 'antd'
 import { useState, useEffect } from 'react'
-import { useAppSettings } from '@/contexts/AppSettingsContext'
-import { AppstoreOutlined } from '@ant-design/icons'
+import { useLocale } from '@/contexts/LocaleContext'
 
 const { Title, Text } = Typography
 
 export default function SettingsPage() {
   const [form] = Form.useForm()
-  const { settings, updateSettings } = useAppSettings()
+  const { settings, updateSettings, t } = useLocale()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     form.setFieldsValue({
-      systemName: 'Web 应用',
-      description: '一个现代化的管理系统',
-      language: 'zhCN',
+      systemName: t('sidebar.title'),
+      description: '',
+      language: settings.locale,
       emailNotification: true,
       smsNotification: false,
       pushNotification: true,
-      darkMode: false,
+      darkMode: settings.theme === 'dark',
       compactMode: false,
       twoFactor: false,
-      captcha: true,
-      sidebarPlacement: settings.sidebarPlacement,
-      themeColor: settings.themeColor
+      captcha: true
     })
-  }, [settings, form])
+  }, [settings, form, t])
 
   const handleSave = () => {
     setLoading(true)
@@ -35,11 +32,11 @@ export default function SettingsPage() {
 
     setTimeout(() => {
       updateSettings({
-        sidebarPlacement: values.sidebarPlacement,
-        themeColor: values.themeColor
+        locale: values.language,
+        theme: values.darkMode ? 'dark' : 'light'
       })
       setLoading(false)
-      message.success('设置保存成功')
+      message.success(t('common.success'))
     }, 500)
   }
 
@@ -47,60 +44,44 @@ export default function SettingsPage() {
     <div>
       <div style={{ marginBottom: 24 }}>
         <Title level={3} style={{ margin: 0 }}>
-          系统设置
+          {t('nav.settings')}
         </Title>
-        <Text type='secondary'>配置系统参数</Text>
+        <Text type='secondary'>{t('nav.settingsDescription')}</Text>
       </div>
 
       <Form form={form} layout='vertical' onFinish={handleSave}>
-        <Card title='布局设置' style={{ marginBottom: 16 }} extra={<AppstoreOutlined />}>
-          <Form.Item label='菜单位置' name='sidebarPlacement'>
-            <Select
-              options={[
-                { value: 'left', label: '左侧' },
-                { value: 'right', label: '右侧' }
-              ]}
-            />
+        <Card title={t('settings.basicInfo')} style={{ marginBottom: 16 }}>
+          <Form.Item label={t('settings.systemName')} name='systemName'>
+            <Input placeholder={t('settings.systemNamePlaceholder')} />
           </Form.Item>
-          <Form.Item label='主题颜色' name='themeColor'>
-            <ColorPicker showText />
+          <Form.Item label={t('settings.description')} name='description'>
+            <Input.TextArea rows={3} placeholder={t('settings.descriptionPlaceholder')} />
           </Form.Item>
         </Card>
 
-        <Card title='基本信息' style={{ marginBottom: 16 }}>
-          <Form.Item label='系统名称' name='systemName'>
-            <Input placeholder='请输入系统名称' />
-          </Form.Item>
-          <Form.Item label='系统描述' name='description'>
-            <Input.TextArea rows={3} placeholder='请输入系统描述' />
-          </Form.Item>
-          <Form.Item label='系统语言' name='language'>
-            <Select
-              options={[
-                { value: 'zhCN', label: '简体中文' },
-                { value: 'enUS', label: 'English' }
-              ]}
-            />
-          </Form.Item>
-        </Card>
-
-        <Card title='通知设置' style={{ marginBottom: 16 }}>
-          <Form.Item label='邮件通知' name='emailNotification' valuePropName='checked'>
-            <Switch />
-          </Form.Item>
-          <Form.Item label='短信通知' name='smsNotification' valuePropName='checked'>
-            <Switch />
-          </Form.Item>
-          <Form.Item label='推送通知' name='pushNotification' valuePropName='checked'>
+        <Card title={t('settings.appearance')} style={{ marginBottom: 16 }}>
+          <Form.Item label={t('settings.darkMode')} name='darkMode' valuePropName='checked'>
             <Switch />
           </Form.Item>
         </Card>
 
-        <Card title='外观设置'>
-          <Form.Item label='深色模式' name='darkMode' valuePropName='checked'>
+        <Card title={t('settings.notification')} style={{ marginBottom: 16 }}>
+          <Form.Item label={t('settings.emailNotification')} name='emailNotification' valuePropName='checked'>
             <Switch />
           </Form.Item>
-          <Form.Item label='紧凑模式' name='compactMode' valuePropName='checked'>
+          <Form.Item label={t('settings.smsNotification')} name='smsNotification' valuePropName='checked'>
+            <Switch />
+          </Form.Item>
+          <Form.Item label={t('settings.pushNotification')} name='pushNotification' valuePropName='checked'>
+            <Switch />
+          </Form.Item>
+        </Card>
+
+        <Card title={t('settings.security')}>
+          <Form.Item label={t('settings.twoFactor')} name='twoFactor' valuePropName='checked'>
+            <Switch />
+          </Form.Item>
+          <Form.Item label={t('settings.captcha')} name='captcha' valuePropName='checked'>
             <Switch />
           </Form.Item>
         </Card>
@@ -108,9 +89,9 @@ export default function SettingsPage() {
         <div style={{ marginTop: 24 }}>
           <Space>
             <Button type='primary' htmlType='submit' loading={loading}>
-              保存设置
+              {t('common.submit')}
             </Button>
-            <Button onClick={() => form.resetFields()}>重置</Button>
+            <Button onClick={() => form.resetFields()}>{t('common.reset')}</Button>
           </Space>
         </div>
       </Form>
