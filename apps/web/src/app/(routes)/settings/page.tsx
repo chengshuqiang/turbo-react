@@ -1,6 +1,6 @@
 'use client'
 
-import { Typography, Card, Form, Input, Switch, Select, Button, Space, message } from 'antd'
+import { Typography, Card, Form, Input, Switch, Button, Space, message } from 'antd'
 import { useState, useEffect } from 'react'
 import { useLocale } from '@/contexts/LocaleContext'
 

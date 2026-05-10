@@ -58,7 +58,7 @@ export function createPostRouter(Router: () => Router) {
     const id = req.params.id!
     const index = posts.findIndex((p: Post) => p.id === parseInt(id))
     if (index !== -1) {
-      const { id: _id, ...updateData } = req.body as Record<string, unknown>
+      const updateData = req.body as Record<string, unknown>
       posts[index] = { ...posts[index], ...updateData } as Post
       writePosts(posts)
       res.json(posts[index])

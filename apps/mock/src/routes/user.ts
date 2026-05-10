@@ -58,7 +58,7 @@ export function createUserRouter(Router: () => Router) {
     const id = req.params.id!
     const index = users.findIndex((u: User) => u.id === parseInt(id))
     if (index !== -1) {
-      const { id: _id, ...updateData } = req.body as Record<string, unknown>
+      const updateData = req.body as Record<string, unknown>
       users[index] = { ...users[index], ...updateData } as User
       writeUsers(users)
       res.json(users[index])

@@ -3,7 +3,6 @@ import { DocSection } from '@/components/ui/DocSection'
 import { InfoCard } from '@/components/ui/InfoCard'
 import { CodeBlock } from '@/components/ui/CodeBlock'
 import { PageLayout } from '@/components/ui/PageLayout'
-import styles from '@/styles/components/common.module.css'
 
 const breadcrumbItems = [{ label: 'Mock Server', href: '/mock' }, { label: '开发指南' }]
 
