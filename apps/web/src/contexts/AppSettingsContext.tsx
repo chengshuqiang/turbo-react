@@ -11,8 +11,6 @@ interface AppSettings {
 interface AppContextType {
   settings: AppSettings
   updateSettings: (newSettings: Partial<AppSettings>) => void
-  collapsed: boolean
-  setCollapsed: (collapsed: boolean) => void
 }
 
 const defaultSettings: AppSettings = {
@@ -25,13 +23,11 @@ const AppContext = createContext<AppContextType | undefined>(undefined)
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(defaultSettings)
-  const [collapsed, setCollapsed] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem('app-settings')
     if (saved) {
       setSettings(JSON.parse(saved))
-      setCollapsed(JSON.parse(saved).collapsed || false)
     }
   }, [])
 
@@ -41,9 +37,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('app-settings', JSON.stringify(updated))
   }
 
-  return (
-    <AppContext.Provider value={{ settings, updateSettings, collapsed, setCollapsed }}>{children}</AppContext.Provider>
-  )
+  return <AppContext.Provider value={{ settings, updateSettings }}>{children}</AppContext.Provider>
 }
 
 export function useAppSettings() {

@@ -17,12 +17,13 @@ import {
   BellOutlined,
   SafetyOutlined
 } from '@ant-design/icons'
+import { useLocale } from '@/contexts/LocaleContext'
 
 const { Sider } = Layout
 
 type MenuItem = Required<MenuProps>['items'][number]
 
-const menuItems: MenuItem[] = [
+const getMenuItems = (): MenuItem[] => [
   {
     key: '/',
     icon: <HomeOutlined />,
@@ -34,13 +35,13 @@ const menuItems: MenuItem[] = [
     label: '组件示例',
     children: [
       {
-        key: '/components/basic',
+        key: '/components',
         label: <Link href='/components'>基础组件</Link>,
         icon: <TableOutlined />
       },
       {
         key: '/components/form',
-        label: <Link href='/components'>表单组件</Link>,
+        label: <Link href='/components/form'>表单组件</Link>,
         icon: <FormOutlined />
       }
     ]
@@ -70,10 +71,10 @@ const menuItems: MenuItem[] = [
   {
     key: 'settings',
     icon: <SettingOutlined />,
-    label: <Link href='/settings'>设置</Link>,
+    label: '系统设置',
     children: [
       {
-        key: '/settings/basic',
+        key: '/settings',
         label: <Link href='/settings'>基本设置</Link>,
         icon: <GlobalOutlined />
       },
@@ -94,23 +95,33 @@ interface SidebarProps {
 
 export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarProps) {
   const pathname = usePathname()
+  const { appTheme } = useLocale()
+
+  const isDark = appTheme === 'dark'
+
+  const siderTheme = isDark ? 'dark' : 'light'
+  const menuTheme = isDark ? 'dark' : 'light'
+
+  const menuItems = getMenuItems()
 
   return (
     <Sider
-      theme='dark'
+      theme={siderTheme}
       collapsible
       collapsed={collapsed}
       onCollapse={onCollapse}
       trigger={null}
       width={260}
-      collapsedWidth={60}
+      collapsedWidth={80}
       style={{
-        background: '#001529',
+        background: 'var(--sidebar-bg)',
         height: '100vh',
         position: 'fixed',
         [placement]: 0,
         top: 0,
-        zIndex: 100
+        zIndex: 100,
+        borderRight: '1px solid var(--sidebar-border)',
+        overflow: 'hidden'
       }}
     >
       <div
@@ -119,18 +130,18 @@ export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarPr
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderBottom: '1px solid rgba(255,255,255,0.1)'
+          borderBottom: '1px solid var(--sidebar-border)'
         }}
       >
         {collapsed ? (
-          <span style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>W</span>
+          <span style={{ color: 'var(--sidebar-text)', fontSize: 20, fontWeight: 'bold' }}>W</span>
         ) : (
-          <h1 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: 0 }}>Web 应用</h1>
+          <h1 style={{ color: 'var(--sidebar-text)', fontSize: 18, fontWeight: 600, margin: 0 }}>Web 应用</h1>
         )}
       </div>
 
       <Menu
-        theme='dark'
+        theme={menuTheme}
         mode='inline'
         selectedKeys={[pathname]}
         defaultOpenKeys={['components', 'system', 'settings']}
@@ -146,7 +157,7 @@ export function Sidebar({ collapsed, onCollapse, placement = 'left' }: SidebarPr
             bottom: 16,
             left: 16,
             fontSize: 12,
-            color: 'rgba(255,255,255,0.45)'
+            color: 'var(--sidebar-footer)'
           }}
         >
           <p>Tailwind v4</p>

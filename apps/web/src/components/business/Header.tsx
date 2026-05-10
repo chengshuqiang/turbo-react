@@ -1,19 +1,43 @@
 'use client'
 
-import { Select, Avatar, Space, Dropdown, Button } from 'antd'
+import { Avatar, Space, Dropdown, Button } from 'antd'
 import type { MenuProps } from 'antd'
 import { useLocale } from '@/contexts/LocaleContext'
 import { useAppSettings } from '@/contexts/AppSettingsContext'
-import { UserOutlined, SettingOutlined, LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import {
+  UserOutlined,
+  SettingOutlined,
+  LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  GlobalOutlined,
+  SunOutlined,
+  MoonOutlined
+} from '@ant-design/icons'
 
 const localeOptions = [
   { value: 'zhCN', label: '中文' },
   { value: 'enUS', label: 'English' }
 ]
 
+const localeItems: MenuProps['items'] = localeOptions.map(option => ({
+  key: option.value,
+  label: option.label
+}))
+
+const themeOptions = [
+  { value: 'light', label: '浅色' },
+  { value: 'dark', label: '深色' }
+]
+
+const themeItems: MenuProps['items'] = themeOptions.map(option => ({
+  key: option.value,
+  label: option.label
+}))
+
 export function Header() {
-  const { locale, setLocale } = useLocale()
-  const { settings, setCollapsed } = useAppSettings()
+  const { locale, setLocale, appTheme, setAppTheme } = useLocale()
+  const { settings, updateSettings } = useAppSettings()
 
   const userMenuItems: MenuProps['items'] = [
     {
@@ -35,6 +59,12 @@ export function Header() {
     }
   ]
 
+  const handleToggleCollapse = () => {
+    updateSettings({ collapsed: !settings.collapsed })
+  }
+
+  const isDark = appTheme === 'dark'
+
   return (
     <div
       style={{
@@ -43,28 +73,43 @@ export function Header() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 24px',
-        background: '#fff',
-        borderBottom: '1px solid #f0f0f0',
-        position: 'sticky',
-        top: 0,
-        zIndex: 99
+        background: 'var(--header-bg)',
+        borderBottom: '1px solid var(--header-border)',
+        flexShrink: 0
       }}
     >
       <Button
         type='text'
         icon={settings.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        onClick={() => setCollapsed(!settings.collapsed)}
-        style={{ fontSize: 16 }}
+        onClick={handleToggleCollapse}
+        style={{ fontSize: 16, color: 'var(--header-icon)' }}
       />
 
       <Space size='middle'>
-        <Select
-          value={locale}
-          onChange={setLocale}
-          options={localeOptions}
-          style={{ width: 100 }}
-          variant='borderless'
-        />
+        <Dropdown
+          menu={{
+            items: themeItems,
+            selectedKeys: [appTheme],
+            onClick: ({ key }) => setAppTheme(key as 'light' | 'dark')
+          }}
+          trigger={['click']}
+        >
+          <Button
+            type='text'
+            icon={isDark ? <SunOutlined /> : <MoonOutlined />}
+            style={{ fontSize: 16, color: 'var(--header-icon)' }}
+          />
+        </Dropdown>
+        <Dropdown
+          menu={{
+            items: localeItems,
+            selectedKeys: [locale],
+            onClick: ({ key }) => setLocale(key as 'zhCN' | 'enUS')
+          }}
+          trigger={['click']}
+        >
+          <Button type='text' icon={<GlobalOutlined />} style={{ fontSize: 16, color: 'var(--header-icon)' }} />
+        </Dropdown>
         <Dropdown menu={{ items: userMenuItems }} placement='bottomRight'>
           <Avatar style={{ backgroundColor: '#1677ff', cursor: 'pointer' }} icon={<UserOutlined />} />
         </Dropdown>

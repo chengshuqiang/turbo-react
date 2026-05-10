@@ -7,11 +7,14 @@ import enUS from 'antd/locale/en_US'
 import type { Locale } from 'antd/es/locale'
 
 type LocaleType = 'zhCN' | 'enUS'
+type ThemeType = 'light' | 'dark'
 
 interface LocaleContextType {
   locale: LocaleType
   setLocale: (locale: LocaleType) => void
   antdLocale: Locale
+  appTheme: ThemeType
+  setAppTheme: (theme: ThemeType) => void
 }
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined)
@@ -21,18 +24,26 @@ const localeMap: Record<LocaleType, Locale> = {
   enUS
 }
 
+const themeMap = {
+  light: theme.defaultAlgorithm,
+  dark: theme.darkAlgorithm
+}
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<LocaleType>('zhCN')
+  const [appTheme, setAppTheme] = useState<ThemeType>('light')
 
   const value = {
     locale,
     setLocale,
-    antdLocale: localeMap[locale]
+    antdLocale: localeMap[locale],
+    appTheme,
+    setAppTheme
   }
 
   return (
     <LocaleContext.Provider value={value}>
-      <ConfigProvider locale={value.antdLocale} theme={{ algorithm: theme.defaultAlgorithm }}>
+      <ConfigProvider locale={value.antdLocale} theme={{ algorithm: themeMap[appTheme] }}>
         {children}
       </ConfigProvider>
     </LocaleContext.Provider>
