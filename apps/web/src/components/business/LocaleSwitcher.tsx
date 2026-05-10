@@ -11,5 +11,10 @@ const localeOptions = [
 export function LocaleSwitcher() {
   const { locale, setLocale } = useLocale()
 
-  return <Select value={locale} onChange={setLocale} style={{ width: 120 }} options={localeOptions} />
+  return (
+    <div className='flex items-center gap-2'>
+      <span className='text-sm text-gray-600 dark:text-gray-400'>语言:</span>
+      <Select value={locale} onChange={setLocale} className='w-28' options={localeOptions} />
+    </div>
+  )
 }
