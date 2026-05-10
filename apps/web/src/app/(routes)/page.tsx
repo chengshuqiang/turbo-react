@@ -3,6 +3,7 @@
 import { Button, Card, Row, Col, Statistic, Table, Tag, Typography } from 'antd'
 import type { TableColumnsType } from 'antd'
 import { UserOutlined, RiseOutlined, DollarOutlined, TeamOutlined } from '@ant-design/icons'
+import { useLocale } from '@/contexts/LocaleContext'
 
 const { Title, Text } = Typography
 
@@ -14,44 +15,46 @@ interface DataType {
   status: string
 }
 
-const columns: TableColumnsType<DataType> = [
-  { title: '姓名', dataIndex: 'name', key: 'name' },
-  { title: '邮箱', dataIndex: 'email', key: 'email' },
-  { title: '角色', dataIndex: 'role', key: 'role' },
-  {
-    title: '状态',
-    dataIndex: 'status',
-    key: 'status',
-    render: (status: string) => <Tag color={status === '活跃' ? 'success' : 'default'}>{status}</Tag>
-  }
-]
-
-const data: DataType[] = [
-  { key: '1', name: '张三', email: 'zhangsan@example.com', role: '管理员', status: '活跃' },
-  { key: '2', name: '李四', email: 'lisi@example.com', role: '编辑', status: '活跃' },
-  { key: '3', name: '王五', email: 'wangwu@example.com', role: '访客', status: '停用' }
-]
-
 export default function Home() {
+  const { t } = useLocale()
+
+  const columns: TableColumnsType<DataType> = [
+    { title: t('users.name'), dataIndex: 'name', key: 'name' },
+    { title: t('users.email'), dataIndex: 'email', key: 'email' },
+    { title: t('users.role'), dataIndex: 'role', key: 'role' },
+    {
+      title: t('users.status'),
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: string) => <Tag color={status === t('users.active') ? 'success' : 'default'}>{status}</Tag>
+    }
+  ]
+
+  const data: DataType[] = [
+    { key: '1', name: 'Zhang San', email: 'zhangsan@example.com', role: t('users.admin'), status: t('users.active') },
+    { key: '2', name: 'Li Si', email: 'lisi@example.com', role: t('users.editor'), status: t('users.active') },
+    { key: '3', name: 'Wang Wu', email: 'wangwu@example.com', role: t('users.visitor'), status: t('users.disabled') }
+  ]
+
   return (
     <div>
       <div style={{ marginBottom: 24 }}>
         <Title level={3} style={{ margin: 0 }}>
-          仪表盘
+          {t('home.title')}
         </Title>
-        <Text type='secondary'>欢迎回来</Text>
+        <Text type='secondary'>{t('home.welcome')}</Text>
       </div>
 
       <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
-            <Statistic title='总用户数' value={1234} prefix={<UserOutlined />} />
+            <Statistic title={t('home.totalUsers')} value={1234} prefix={<UserOutlined />} />
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title='活跃用户'
+              title={t('home.activeUsers')}
               value={856}
               prefix={<TeamOutlined />}
               styles={{ content: { color: '#3f8600' } }}
@@ -60,30 +63,28 @@ export default function Home() {
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
-            <Statistic title='新增用户' value={42} prefix={<RiseOutlined />} suffix='/天' />
+            <Statistic title={t('home.newUsers')} value={42} prefix={<RiseOutlined />} suffix={t('home.perDay')} />
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
-            <Statistic title='总收入' value={12580} prefix={<DollarOutlined />} suffix='¥' />
+            <Statistic title={t('home.totalRevenue')} value={12580} prefix={<DollarOutlined />} suffix='¥' />
           </Card>
         </Col>
       </Row>
 
-      <Card title='用户列表' style={{ marginBottom: 24 }} extra={<Button type='primary'>添加用户</Button>}>
+      <Card
+        title={t('home.userList')}
+        style={{ marginBottom: 24 }}
+        extra={<Button type='primary'>{t('home.addUser')}</Button>}
+      >
         <Table<DataType> columns={columns} dataSource={data} pagination={false} />
       </Card>
 
-      <Card title='快捷操作'>
+      <Card title={t('home.quickActions')}>
         <Row gutter={[12, 12]}>
           <Col>
-            <Button type='primary'>新建项目</Button>
-          </Col>
-          <Col>
-            <Button>发送通知</Button>
-          </Col>
-          <Col>
-            <Button>导出数据</Button>
+            <Button type='primary'>{t('home.newProject')}</Button>
           </Col>
         </Row>
       </Card>

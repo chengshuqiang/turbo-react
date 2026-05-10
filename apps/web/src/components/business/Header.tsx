@@ -17,6 +17,8 @@ import {
 export function Header() {
   const { locale, setLocale, appTheme, setAppTheme, t, settings, toggleCollapse } = useLocale()
 
+  const sidebarWidth = settings.collapsed ? 80 : 260
+
   const localeItems: MenuProps['items'] = [
     { key: 'zhCN', label: t('locale.zhCN') },
     { key: 'enUS', label: t('locale.enUS') }
@@ -57,9 +59,15 @@ export function Header() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 24px',
+        paddingLeft: sidebarWidth + 24,
         background: 'var(--header-bg)',
         borderBottom: '1px solid var(--header-border)',
-        flexShrink: 0
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99,
+        transition: 'padding-left 0.2s'
       }}
     >
       <Button
